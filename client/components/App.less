@@ -1,3 +1,33 @@
-.components-App {
-    color: maroon;
+@font-face {
+    font-family: regularFont;
+    src: url(client/fonts/regular.woff2);
+}
+
+@font-face {
+    font-family: boldFont;
+    src: url(client/fonts/bold.woff2);
+}
+
+* {
+    color: @black;
+    text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    .font-regular();
+    background-color: @light-gray;
+}
+
+.content {
+    max-width: 1320px;
+    box-sizing: content-box;
+    margin: @xxxlarge auto;
+    padding: @large;
+
+    @media (max-width: @m) {
+        margin: @medium auto;
+    }
 }

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="loader"
+  >
+    <div
+      class="circle"
+    />
+  </div>
+</DocumentFragment>
+`;

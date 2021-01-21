@@ -8,9 +8,7 @@
         "airbnb"
     ],
     "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
-        "google": true
+        "Fetch": "readonly"
     },
     "parser": "@typescript-eslint/parser",
     "plugins": [
@@ -30,8 +28,15 @@
         "camelcase": "off",
         "no-use-before-define": "off",
         "object-curly-newline": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-shadow": "off",
+        "react/require-default-props": "off",
+        "@typescript-eslint/no-shadow": "error",
         "max-len": [2, 120, 4],
         "react-hooks/rules-of-hooks": "error",
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true } ],
         "react-hooks/exhaustive-deps": "warn",
         "import/extensions": [
             "error",
@@ -48,6 +53,9 @@
         "import/resolver": {
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            },
+            "webpack": {
+                "config": "webpack.dev.config.js"
             }
         }
     }

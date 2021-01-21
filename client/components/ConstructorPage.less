@@ -1,0 +1,99 @@
+.root {
+    .page-styles();
+}
+
+.name {
+    .page-title();
+    letter-spacing: @xxsmall;
+    margin-bottom: @xxlarge;
+
+    @media (max-width: @l) {
+        text-align: center;
+    }
+}
+
+.content {
+    display: flex;
+
+    @media (max-width: @l) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.info {
+    flex: 0 0 50%;
+    margin-right: @medium;
+
+    @media (max-width: @l) {
+        margin-right: 0;
+        margin-bottom: @xxlarge;
+    }
+
+    @media (max-width: @s) {
+        margin-bottom: @large;
+    }
+}
+
+.teamImage {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: @xlarge;
+}
+
+.url {
+    .font-bold();
+    .font-size-large();
+    margin-top: @xsmall;
+    display: block;
+    text-decoration: underline;
+
+    &:hover {
+        color: @gray;
+    }
+
+    @media (max-width: @s) {
+        .font-size-medium();
+    }
+}
+
+.driver {
+    flex: 1 1 auto;
+    border: @xxsmall @light-gray solid;
+    border-radius: @xsmall;
+    padding: @small;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+
+    @media (max-width: @l) {
+        max-width: 500px;
+        margin-bottom: @xlarge;
+    }
+
+    @media (max-width: @s) {
+        max-width: 250px;
+        margin-bottom: @medium;
+    }
+
+    &:hover {
+        background-color: @light-gray;
+    }
+
+    &:not(:last-of-type) {
+        margin-right: @small;
+    }
+}
+
+.driverImage {
+    width: 100%;
+}
+
+.driverNumber {
+    color: @gray;
+    margin: @medium 0;
+    .font-size-xlarge();
+}
+
+.driverName {
+    .font-size-large();
+}

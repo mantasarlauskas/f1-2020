@@ -1,0 +1,19 @@
+.root {
+    display: flex;
+
+    @media (max-width: @m) {
+        flex-wrap: wrap;
+    }
+}
+
+.tab {
+    flex: 1;
+
+    &:not(:last-of-type) {
+        margin-right: @xsmall;
+    }
+
+    @media (max-width: @m) {
+        flex: 0 0 100%;
+    }
+}

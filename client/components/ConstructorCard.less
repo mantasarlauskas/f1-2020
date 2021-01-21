@@ -1,0 +1,32 @@
+.root {
+    display: block;
+    padding: @small @small 0 0;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-top-width: @xxsmall;
+    border-right-width: @xxsmall;
+    border-top-right-radius: @xsmall;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    width: 500px;
+
+    @media (max-width: @s) {
+        width: 100%;
+    }
+}
+
+.name {
+    .font-size-large();
+    border-left-style: solid;
+    border-left-width: @xsmall;
+    padding-left: @medium;
+    margin-bottom: @medium;
+}
+
+.image {
+    display: block;
+    padding: 0 @large;
+    width: 100%;
+    background-image: url(client/assets/plus.png);
+    background-size: @small;
+}

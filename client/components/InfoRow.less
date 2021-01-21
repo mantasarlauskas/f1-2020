@@ -1,0 +1,20 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+    .font-size-large();
+    padding: @xsmall 0;
+
+    @media (max-width: @s) {
+        flex-direction: column;
+        .font-size-medium();
+    }
+}
+
+.label {
+    .font-bold();
+    flex: 0 0 50%;
+}
+
+.value {
+    flex: 0 0 50%;
+}

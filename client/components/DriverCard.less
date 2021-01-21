@@ -1,0 +1,73 @@
+.root {
+    display: block;
+    padding: @small @small 0 0;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-top-width: @xxsmall;
+    border-right-width: @xxsmall;
+    border-top-right-radius: @xsmall;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    width: 350px;
+
+    @media (max-width: @s) {
+        width: 100%;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.index {
+    .font-bold();
+    .font-size-xxlarge();
+}
+
+.name {
+    text-transform: uppercase;
+    text-align: right;
+    border-right-style: solid;
+    border-right-width: @xxsmall;
+    padding: 0 @small;
+    transition: color 0.3s ease;
+}
+
+.lastName {
+    .font-bold();
+}
+
+.body {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-image: url(client/assets/plus.png);
+    background-size: @small;
+}
+
+.number {
+    .font-bold();
+    .font-size-xxlarge();
+    background-color: @black;
+    padding: @xsmall;
+    border-radius: @xsmall;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.team {
+    color: @gray;
+    margin: @xsmall 0;
+}
+
+.image {
+    width: 192px;
+    height: 192px;
+
+    img {
+        width: 100%;
+    }
+}

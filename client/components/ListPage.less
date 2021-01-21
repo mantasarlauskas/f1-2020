@@ -1,0 +1,20 @@
+.root {
+    .page-styles();
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: -@medium;
+}
+
+.title {
+    .page-title();
+    margin-bottom: @xxxlarge;
+    text-align: center;
+
+    @media (max-width: @s) {
+        margin-bottom: @xxlarge;
+    }
+}

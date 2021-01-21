@@ -1,0 +1,73 @@
+.root {
+    .page-styles();
+}
+
+.name {
+    .page-title();
+    letter-spacing: @xxsmall;
+}
+
+.number {
+    .font-size-xxlarge();
+    color: @gray;
+    margin-bottom: @xlarge;
+}
+
+.driverImage {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    background-image: url(client/assets/plus.png);
+    border-radius: @large;
+
+    @media (max-width: @s) {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.content {
+    display: flex;
+    margin-top: @medium;
+
+    @media (max-width: @l) {
+        flex-direction: column;
+    }
+}
+
+.info {
+    flex: 0 0 50%;
+    padding-left: @xlarge;
+
+    @media (max-width: @s) {
+        padding-left: 0;
+    }
+}
+
+.url {
+    .font-bold();
+    .font-size-large();
+    margin-top: @xsmall;
+    display: block;
+    text-decoration: underline;
+
+    &:hover {
+        color: @gray;
+    }
+
+    @media (max-width: @s) {
+        .font-size-medium();
+    }
+}
+
+.teamImage {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+
+    @media (max-width: @l) {
+        margin: @medium auto;
+    }
+}

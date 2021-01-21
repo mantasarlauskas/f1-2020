@@ -1,0 +1,56 @@
+.navigation {
+    height: 70px;
+    background-color: @red;
+    color: @white;
+
+    @media (max-width: @m) {
+        height: auto;
+    }
+}
+
+.icon {
+    height: 24px;
+    width: 24px;
+    fill: @white;
+    display: none;
+    padding: @large;
+    box-sizing: content-box;
+
+    @media (max-width: @m) {
+        display: block;
+    }
+}
+
+.items {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+
+    @media (max-width: @m) {
+        display: none;
+
+        &.responsiveVisible {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.item {
+    cursor: pointer;
+    padding: 26px 8px 13px 13px;
+    height: 100%;
+    color: @white;
+    transition: background-color 0.3s ease;
+
+    &:hover, &.active {
+        background-color: @black;
+    }
+
+    @media (max-width: @m) {
+        display: block;
+        padding: @medium;
+        border-top: 1px @white solid;
+    }
+}

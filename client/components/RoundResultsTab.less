@@ -1,0 +1,23 @@
+.root {
+    display: block;
+    padding: @small @medium;
+    background-color: @light-gray;
+    border-top-left-radius: @xsmall;
+    border-top-right-radius: @xsmall;
+    border-bottom: 4px solid @white;
+    cursor: pointer;
+    text-align: center;
+
+    @media (max-width: @m) {
+        border-radius: 0;
+    }
+
+    &:hover {
+        background-color: darken(@light-gray, 10%);
+    }
+
+    &.active {
+        background-color: @red;
+        color: @white;
+    }
+}

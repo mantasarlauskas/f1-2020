@@ -10,9 +10,24 @@
         "alwaysStrict": true,
         "strictBindCallApply": true,
         "strictNullChecks": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "baseUrl": "./",
+        "paths": {
+            "client": [
+                "./client"
+            ],
+            "server": [
+                "./server"
+            ]
+        },
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/testing",
+        "**/*.test.tsx",
+        "**/*.test.ts"
+    ],
+    "includes": [
+        "./externals.d.ts"
     ]
 }
