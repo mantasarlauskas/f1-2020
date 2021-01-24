@@ -1,0 +1,33 @@
+.root {
+    height: 200px;
+    background-image: url(client/assets/plus.png);
+    background-clip: content-box;
+    background-size: @small;
+    border: 2px solid @black;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease-in-out;
+    padding: @large;
+    background-color: @light-gray;
+
+    @media (max-width: @s) {
+        height: 120px;
+    }
+
+    &:hover {
+        border-color: @red;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+.text {
+    background: @white;
+    .font-size-xlarge();
+    border-radius: @xsmall;
+    padding: @medium @xlarge;
+    text-align: center;
+}

@@ -12,18 +12,21 @@ export async function getServerData(fetchFn: Fetch): Promise<InitialPageState> {
         getDriverStandings(fetchFn),
         getConstructorStandings(fetchFn),
         getSchedule(fetchFn),
+        getResults(fetchFn),
     ]).then(([
         Drivers,
         Constructors,
         DriverStandings,
         ConstructorStandings,
         Schedule,
+        Results,
     ]) => ({
         Drivers: mapDrivers(Drivers, DriverStandings, Constructors),
         Constructors,
         DriverStandings,
         ConstructorStandings,
         Schedule,
+        Results,
     }));
 }
 
@@ -78,7 +81,12 @@ async function getConstructorStandings(fetchFn: Fetch): Promise<ConstructorStand
     }));
 }
 
-async function getSchedule(fetchFn: Fetch) {
+async function getResults(fetchFn: Fetch) {
     const { RaceTable: { Races } } = await fetchData('', fetchFn);
+    return Races;
+}
+
+async function getSchedule(fetchFn: Fetch) {
+    const { RaceTable: { Races } } = await fetchData('', fetchFn, '2021');
     return Races;
 }

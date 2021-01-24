@@ -1,0 +1,30 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: @xxlarge;
+
+    @media (max-width: @l) {
+        flex-direction: column;
+    }
+}
+
+.map {
+    flex: 0 0 auto;
+    height: 200px;
+    width: 400px;
+    border-radius: @xxsmall;
+
+    @media (max-width: @l) {
+        width: 100%;
+    }
+}
+
+.info {
+    flex: 1;
+    margin-right: @medium;
+
+    @media (max-width: @l) {
+        margin-right: 0;
+        margin-bottom: @large;
+    }
+}

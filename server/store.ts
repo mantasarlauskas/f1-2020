@@ -6,8 +6,9 @@ export function getStore(initialState: InitialPageState) {
     return createStore(
         rootReducer,
         initialState,
-        typeof window !== 'undefined' && (window as any).__REDUX_DEVTOOLS_EXTENSION__
-            ? (window as any).__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
+        process.env.NODE_ENV !== 'production' && typeof window !== 'undefined'
+        && (window as any).__REDUX_DEVTOOLS_EXTENSION__ ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+            : (f) => f,
     );
 }
 

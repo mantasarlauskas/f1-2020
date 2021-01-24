@@ -35,14 +35,15 @@ export function getReduxState(): PageState {
         DriverStandings: [getDriverStandingsRow()],
         Constructors: [getConstructor()],
         ConstructorStandings: [getConstructorStandingsRow()],
-        Schedule: [getSchedule()],
+        Schedule: [getRace()],
+        Results: [getRace()],
         RoundResults: {
             0: getRoundResults(),
         },
     };
 }
 
-export function getSchedule() {
+export function getRace() {
     return {
         season: '2020',
         round: '1',

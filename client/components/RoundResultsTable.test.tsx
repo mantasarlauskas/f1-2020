@@ -27,8 +27,8 @@ describe('<RoundResultsTable />', () => {
 
     it('renders race table', () => {
         const { queryByText } = renderWithRouterAndRedux(<RoundResultsTable {...props} />, state, {
-            url: '/raceResults/0',
-            path: '/raceResults/:id',
+            url: '/results/0',
+            path: '/results/:id',
         });
 
         expect(queryByText('Max Verstappen')).toBeInTheDocument();
@@ -37,8 +37,8 @@ describe('<RoundResultsTable />', () => {
 
     it('renders qualifying table', () => {
         const { queryByText } = renderWithRouterAndRedux(<RoundResultsTable {...props} />, state, {
-            url: '/raceResults/0/qualifying',
-            path: '/raceResults/:id',
+            url: '/results/0/qualifying',
+            path: '/results/:id',
         });
 
         expect(queryByText('Valtteri Bottas')).toBeInTheDocument();
@@ -47,8 +47,8 @@ describe('<RoundResultsTable />', () => {
 
     it('renders pit stops table', () => {
         const { queryByText } = renderWithRouterAndRedux(<RoundResultsTable {...props} />, state, {
-            url: '/raceResults/0/pitstops',
-            path: '/raceResults/:id',
+            url: '/results/0/pitstops',
+            path: '/results/:id',
         });
 
         expect(queryByText('Alexander Albon')).toBeInTheDocument();
@@ -57,8 +57,8 @@ describe('<RoundResultsTable />', () => {
 
     it('does request if table does not exist and then shows table', async () => {
         const { queryByText } = renderWithRouterAndRedux(<RoundResultsTable roundId="1" />, state, {
-            url: '/raceResults/1',
-            path: '/raceResults/:id',
+            url: '/results/1',
+            path: '/results/:id',
         });
 
         await waitFor(() => {

@@ -2,7 +2,7 @@ import emptyReducer from 'client/reducers/empty';
 
 export default emptyReducer;
 
-export interface ScheduleRow {
+export interface RaceRow {
     season: string;
     round: string;
     url: string;
@@ -12,7 +12,7 @@ export interface ScheduleRow {
     Circuit: Circuit;
 }
 
-interface Circuit {
+export interface Circuit {
     circuitId: string;
     url: string;
     circuitName: string;

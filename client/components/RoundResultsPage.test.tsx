@@ -6,14 +6,17 @@ import { getReduxState } from 'client/testing/testFactories';
 
 jest.mock('client/components/RoundResultsTable', () => () => <span>RoundResultsTable</span>);
 jest.mock('client/components/RoundResultsTabs', () => () => <span>RoundResultsTabs</span>);
+jest.mock('mapbox-gl', () => ({
+    Map: jest.fn(),
+}));
 
 describe('<RoundResultsPage />', () => {
     const state = getReduxState();
 
     it('renders empty page when round data does not exist', () => {
         const { queryByText } = renderWithRouterAndRedux(<RoundResultsPage />, state, {
-            path: '/raceResults/:id',
-            url: '/raceResults/2',
+            path: '/results/:id',
+            url: '/results/2',
         });
 
         expect(queryByText('404')).toBeInTheDocument();
@@ -21,8 +24,8 @@ describe('<RoundResultsPage />', () => {
 
     it('renders round results page', () => {
         const { queryByText } = renderWithRouterAndRedux(<RoundResultsPage />, state, {
-            path: '/raceResults/:id',
-            url: '/raceResults/1',
+            path: '/results/:id',
+            url: '/results/1',
         });
 
         expect(queryByText('RoundResultsTable')).toBeInTheDocument();

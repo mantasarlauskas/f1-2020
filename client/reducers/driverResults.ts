@@ -31,6 +31,7 @@ interface AddDriverAction {
 }
 
 export interface DriverResultsRow {
+    roundId: string;
     raceName: string;
     date: string;
     position: string;

@@ -24,10 +24,27 @@ body {
 .content {
     max-width: 1320px;
     box-sizing: content-box;
-    margin: @xxxlarge auto;
-    padding: @large;
+    margin: 0 auto;
+    padding: @xxxlarge @large;
 
     @media (max-width: @m) {
-        margin: @medium auto;
+        padding: @xlarge @large;
     }
+}
+
+.page {
+    margin-top: 70px;
+    min-height: calc(100vh - 100px);
+
+    @media (max-width: @l) {
+        margin-top: 56px;
+    }
+}
+
+.footer {
+    background-color: @black;
+    height: 100px;
+    line-height: 100px;
+    color: @white;
+    text-align: center;
 }

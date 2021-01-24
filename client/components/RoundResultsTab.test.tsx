@@ -18,7 +18,7 @@ describe('<RoundResultsTab />', () => {
 
     it('adds active class when url matches', () => {
         const { container } = renderWithRouter(<RoundResultsTab {...props} />, {
-            url: '/roundResults/1/race',
+            url: '/results/1/race',
         });
 
         expect(container.getElementsByClassName('active').length).toEqual(1);
@@ -26,7 +26,7 @@ describe('<RoundResultsTab />', () => {
 
     it('does not add active class when url does not match', () => {
         const { container } = renderWithRouter(<RoundResultsTab {...props} />, {
-            url: '/roundResults/1/qualifying',
+            url: '/results/1/qualifying',
         });
 
         expect(container.getElementsByClassName('active').length).toEqual(0);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { mapDriverResults } from 'client/utils/clientData';
 import { addDriverResults, DriverResultsRow } from 'client/reducers/driverResults';
 import SeasonResultsTable, { ResultsStateName } from 'client/components/SeasonResultsTable';
@@ -26,6 +27,7 @@ function DriverResultsTable({ driverId }: DriverResultsTableProps) {
                 </tr>
             )}
             content={(driverResults: DriverResultsRow[]) => driverResults.map(({
+                roundId,
                 raceName,
                 date,
                 constructorName,
@@ -38,7 +40,11 @@ function DriverResultsTable({ driverId }: DriverResultsTableProps) {
                 fastestLap,
             }) => (
                 <tr key={raceName}>
-                    <td>{raceName}</td>
+                    <td>
+                        <Link to={`/results/${roundId}`}>
+                            {raceName}
+                        </Link>
+                    </td>
                     <td>{date}</td>
                     <td>{constructorName}</td>
                     <td>{grid}</td>

@@ -2,6 +2,7 @@ import React from 'react';
 import { mapConstructorResults } from 'client/utils/clientData';
 import { addConstructorResults, ConstructorResultsRow } from 'client/reducers/constructorResults';
 import SeasonResultsTable, { ResultsStateName } from 'client/components/SeasonResultsTable';
+import { Link } from 'react-router-dom';
 
 function ConstructorResultsTable({ constructorId }: ConstructorResultsTableProps) {
     return (
@@ -26,6 +27,7 @@ function ConstructorResultsTable({ constructorId }: ConstructorResultsTableProps
             )}
             content={(constructorResults: ConstructorResultsRow[]) => constructorResults.map(({
                 raceName,
+                roundId,
                 driverResults,
             }) => driverResults.map(({
                 driverName,
@@ -38,7 +40,11 @@ function ConstructorResultsTable({ constructorId }: ConstructorResultsTableProps
                 fastestLap,
             }) => (
                 <tr key={`${raceName}-${driverName}`}>
-                    <td>{raceName}</td>
+                    <td>
+                        <Link to={`/results/${roundId}`}>
+                            {raceName}
+                        </Link>
+                    </td>
                     <td>{driverName}</td>
                     <td>{grid}</td>
                     <td>{position}</td>

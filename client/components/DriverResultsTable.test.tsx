@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { waitFor } from '@testing-library/react';
 import DriverResultsTable from 'client/components/DriverResultsTable';
-import { renderWithRedux } from 'client/testing/utils';
+import { renderWithRouterAndRedux } from 'client/testing/utils';
 import { getDriverResultsResponse, getReduxState } from 'client/testing/testFactories';
 import { fetchData } from 'server/utils';
 
@@ -14,7 +14,7 @@ describe('<DriverResultsTable />', () => {
     const state = getReduxState();
 
     it('shows driver results table', async () => {
-        const { queryByText } = renderWithRedux(
+        const { queryByText } = renderWithRouterAndRedux(
             <DriverResultsTable driverId="hamilton" />,
             state,
         );
@@ -27,7 +27,7 @@ describe('<DriverResultsTable />', () => {
 
     it('does not show anything when results does not exist', async () => {
         (fetchData as jest.Mock) = jest.fn().mockResolvedValueOnce({ RaceTable: { Races: [] } });
-        const { container } = renderWithRedux(
+        const { container } = renderWithRouterAndRedux(
             <DriverResultsTable driverId="hamilton" />,
             state,
         );

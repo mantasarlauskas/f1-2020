@@ -1,18 +1,34 @@
-import { useLocation } from 'react-router-dom';
 import useScrollToTop from 'client/hooks/useScrollToTop';
-import { renderHook } from '@testing-library/react-hooks';
-import { waitFor } from '@testing-library/react';
-
-jest.mock('react-router-dom');
+import { renderHookWithRouter } from 'client/testing/utils';
 
 describe('useScrollToTop', () => {
-    (useLocation as jest.Mock) = jest.fn();
     window.scrollTo = jest.fn();
 
-    it('scrolls to top', async () => {
-        renderHook(() => useScrollToTop());
-        await waitFor(() => {
-            expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('does not scroll to top when prev route is same results page', () => {
+        renderHookWithRouter(() => useScrollToTop(), {
+            url: '/results/12/race',
+            state: {
+                id: '12',
+                prevPath: '/results/12/qualifying',
+            },
         });
+
+        expect(window.scrollTo).not.toBeCalled();
+    });
+
+    it('scrolls to top', () => {
+        renderHookWithRouter(() => useScrollToTop(), {
+            url: '/results/13/race',
+            state: {
+                id: '12',
+                prevPath: '/results/12/qualifying',
+            },
+        });
+
+        expect(window.scrollTo).toBeCalled();
     });
 });

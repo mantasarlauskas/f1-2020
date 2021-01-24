@@ -11,10 +11,11 @@ function Navigation() {
         <div className={styles.navigation}>
             <MenuSvg className={styles.icon} onClick={() => setResponsiveVisible(!responsiveVisible)} />
             <div className={classNames(styles.items, { [styles.responsiveVisible]: responsiveVisible })}>
-                {navigationRoutes.map(({ type, url }) => (
+                {navigationRoutes.map(({ type, url, navExact = true }) => (
                     <NavLink
                         to={url}
                         key={url}
+                        exact={navExact}
                         className={styles.item}
                         activeClassName={styles.active}
                         onClick={() => setResponsiveVisible(false)}

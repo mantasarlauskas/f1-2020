@@ -4,9 +4,10 @@ import { getDriverFullName } from 'client/utils/driver';
 import { PitStopRow, QualifyingResultsRow, RaceResultsRow, RoundResults } from 'client/reducers/roundResults';
 
 export function mapDriverResults({ RaceTable: { Races } }: any): DriverResultsRow[] {
-    return Races.map(({ raceName, date, Results: [Result] }: any) => {
+    return Races.map(({ raceName, round, date, Results: [Result] }: any) => {
         const { position, points, grid, laps, status, Constructor: { name }, Time, FastestLap } = Result;
         return {
+            roundId: round,
             raceName,
             date,
             position,
@@ -22,8 +23,9 @@ export function mapDriverResults({ RaceTable: { Races } }: any): DriverResultsRo
 }
 
 export function mapConstructorResults({ RaceTable: { Races } }: any): ConstructorResultsRow[] {
-    return Races.map(({ raceName, Results }: any) => ({
+    return Races.map(({ raceName, round, Results }: any) => ({
         raceName,
+        roundId: round,
         driverResults: Results.map(({
             position,
             points,

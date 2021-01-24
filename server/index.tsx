@@ -8,8 +8,15 @@ import App from 'client/components/App';
 import { getServerData } from 'server/serverData';
 import { getStore } from 'server/store';
 import { StaticRouter } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const app = express();
+
+app.get('*.js', (req, res, next) => {
+    req.url += '.gz';
+    res.set('Content-Encoding', 'gzip');
+    next();
+});
 
 app.use(express.static('dist'));
 
@@ -25,9 +32,12 @@ app.get('*', async (req, res) => {
         </Provider>,
     );
 
+    const helmet = Helmet.renderStatic();
     const html = index
         .replace('{{react}}', component)
-        .replace('{{redux}}', JSON.stringify(store.getState()).replace(/</g, '\\u003c'));
+        .replace('{{redux}}', JSON.stringify(store.getState()).replace(/</g, '\\u003c'))
+        .replace('</head>', `${helmet.meta.toString()}</head>`)
+        .replace('</head>', `${helmet.title.toString()}</head>`);
 
     res.send(html);
 });

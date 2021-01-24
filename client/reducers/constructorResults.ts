@@ -35,6 +35,7 @@ interface AddConstructorAction {
 
 export interface ConstructorResultsRow {
     raceName: string;
+    roundId: string;
     driverResults: ConstructorDriverResults[];
 }
 
