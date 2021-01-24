@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf ./dist && webpack --config webpack.prod.config.js",
     "dev-build": "rm -rf ./dist && webpack --config ./webpack.dev.config.js",
-    "start": "node ./dist/server.js",
+    "start": "node dist/server.js",
     "dev-server": "nodemon ./server/dev.js",
     "start-dev": "webpack-dev-server --config ./webpack.dev.config.js",
     "lint": "eslint . --ext .tsx,.ts.js --ignore-pattern node_modules/"
