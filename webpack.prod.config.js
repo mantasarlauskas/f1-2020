@@ -61,7 +61,7 @@ const commonConfig = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': JSON.stringify(process.env),
+            'process.env.MAP_TOKEN': JSON.stringify(process.env.MAP_TOKEN),
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
