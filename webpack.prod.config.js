@@ -1,4 +1,4 @@
-const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
@@ -60,7 +60,9 @@ const commonConfig = {
         ],
     },
     plugins: [
-        new Dotenv(),
+        new webpack.DefinePlugin({
+            'process.env': JSON.stringify(process.env),
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
