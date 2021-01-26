@@ -22,19 +22,19 @@ function DriverStandings({ driverStandingsRow }: DriverStandingsProps) {
 
     const { name } = constructor;
     return (
-        <div className={classNames(styles.root, teamBorders[constructorId])}>
+        <Link to={`/drivers/${driverId}`} className={classNames(styles.root, teamBorders[constructorId])}>
             <div className={styles.position}>{position}</div>
-            <Link to={`/drivers/${driverId}`} className={styles.name}>
+            <div className={styles.name}>
                 {getDriverFullName(driver)}
-            </Link>
-            <Link to={`/constructors/${constructorId}`} className={styles.team}>
+            </div>
+            <div className={styles.team}>
                 {name}
-            </Link>
+            </div>
             <div className={styles.image}>
-                <img src={getImageUrl(constructorId)} alt={name} />
+                <img src={getImageUrl(constructorId, 300)} alt={name} />
             </div>
             <div className={styles.points}>{points}</div>
-        </div>
+        </Link>
     );
 }
 

@@ -38,7 +38,7 @@ function ConstructorPage() {
             </h1>
             <div className={styles.content}>
                 <div className={styles.info}>
-                    <img className={styles.teamImage} src={getImageUrl(constructorId)} alt={name} />
+                    <img className={styles.teamImage} src={getImageUrl(constructorId, 500)} alt={name} />
                     <InfoRow label="Nationality" value={nationality} />
                     <InfoRow label="Points" value={points} />
                     <InfoRow label="Wins" value={wins} />

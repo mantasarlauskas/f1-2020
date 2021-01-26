@@ -20,7 +20,7 @@ function ConstructorCard({ constructorInfo: { name, constructorId } }: Construct
             <div className={classNames(styles.name, teamBorders[constructorId])}>
                 {name}
             </div>
-            <img className={styles.image} src={getImageUrl(constructorId)} alt={name} />
+            <img className={styles.image} src={getImageUrl(constructorId, 500)} alt={name} />
         </Link>
     );
 }

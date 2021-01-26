@@ -20,16 +20,19 @@ function ConstructorStandings({ constructorStandingsRow }: ConstructorStandingsP
 
     const { name } = constructor;
     return (
-        <div className={classNames(styles.root, teamBorders[constructorId])}>
+        <Link
+            to={`/constructors/${constructorId}`}
+            className={classNames(styles.root, teamBorders[constructorId])}
+        >
             <div className={styles.position}>{position}</div>
-            <Link to={`/constructors/${constructorId}`} className={styles.name}>
+            <div className={styles.name}>
                 {name}
-            </Link>
+            </div>
             <div className={styles.image}>
-                <img src={getImageUrl(constructorId)} alt={name} />
+                <img src={getImageUrl(constructorId, 300)} alt={name} />
             </div>
             <div className={styles.points}>{points}</div>
-        </div>
+        </Link>
     );
 }
 

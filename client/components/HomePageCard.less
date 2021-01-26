@@ -15,7 +15,7 @@
     background-color: @light-gray;
 
     @media (max-width: @s) {
-        height: 120px;
+        height: auto;
     }
 
     &:hover {
@@ -30,4 +30,10 @@
     border-radius: @xsmall;
     padding: @medium @xlarge;
     text-align: center;
+
+    @media (max-width: @s) {
+        .font-size-large();
+        padding: @medium;
+        margin: @large;
+    }
 }

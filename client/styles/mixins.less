@@ -25,10 +25,12 @@
     border-bottom-width: @xxsmall;
     border-right-width: @xxsmall;
     border-bottom-right-radius: @xsmall;
+    border-top-left-radius: @xsmall;
     display: flex;
     .font-size-large();
+    transition: background-color 0.2s ease-in-out;
 
-    > div, > a {
+    > div {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -39,5 +41,9 @@
 
     @media (max-width: @m) {
         flex-direction: column;
+    }
+
+    &:hover {
+        background-color: @light-gray;
     }
 }

@@ -47,7 +47,7 @@ function DriverCard({
                     {permanentNumber}
                 </div>
                 <div className={styles.image}>
-                    <img src={getImageUrl(driverId)} alt={familyName} />
+                    <img src={getImageUrl(driverId, 200)} alt={familyName} />
                 </div>
             </div>
         </Link>

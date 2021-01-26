@@ -38,7 +38,7 @@ function DriverPage() {
                     <img src={getImageUrl(driverId)} alt={name} />
                 </div>
                 <div className={styles.info}>
-                    <img className={styles.teamImage} src={getImageUrl(constructorId)} alt={constructorName} />
+                    <img className={styles.teamImage} src={getImageUrl(constructorId, 500)} alt={constructorName} />
                     <InfoRow label="Team" value={constructorName} url={`/constructors/${constructorId}`} />
                     <InfoRow label="Nationality" value={nationality} />
                     <InfoRow label="Points" value={points} />
