@@ -1,6 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ConstructorStandingsRow } from 'client/reducers/constructorStandings';
-import { useShallowSelector } from 'client/utils/redux';
 import { PageState } from 'client/reducers';
 import styles from 'client/styles/standings.less';
 import classNames from 'classnames';
@@ -10,7 +10,7 @@ import { getImageUrl } from 'client/utils/images';
 
 function ConstructorStandings({ constructorStandingsRow }: ConstructorStandingsProps) {
     const { constructorId, position, points } = constructorStandingsRow;
-    const constructor = useShallowSelector(({ Constructors }: PageState) => (
+    const constructor = useSelector(({ Constructors }: PageState) => (
         Constructors.find((c) => c.constructorId === constructorId)
     ));
 

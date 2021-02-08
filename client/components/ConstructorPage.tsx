@@ -15,14 +15,16 @@ import ConstructorResultsTable from 'client/components/ConstructorResultsTable';
 
 function ConstructorPage() {
     const { id } = useParams<RouterParams>();
-    const [constructor, constructorStandings, drivers] = useShallowSelector(({
+    const drivers = useShallowSelector(({ Drivers }: PageState) => (
+        Drivers.filter(({ constructorId }) => constructorId === id)
+    ));
+
+    const [constructor, constructorStandings] = useShallowSelector(({
         Constructors,
         ConstructorStandings,
-        Drivers,
     }: PageState) => [
         Constructors.find(({ constructorId }) => constructorId === id),
         ConstructorStandings.find(({ constructorId }) => constructorId === id),
-        Drivers.filter(({ constructorId }) => constructorId === id),
     ]);
 
     if (!constructor || !constructorStandings) {

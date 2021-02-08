@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { PageState } from 'client/reducers';
 import ResultsTable from 'client/components/ResultsTable';
 import { getDriverFullName } from 'client/utils/driver';
+import { useShallowSelector } from 'client/utils/redux';
 
 function PitStopsTable({ roundId }: PitStopsTableProps) {
-    const pitStops = useSelector(({ RoundResults, Drivers }: PageState) => (
+    const pitStops = useShallowSelector(({ RoundResults, Drivers }: PageState) => (
         RoundResults?.[roundId]?.PitStops?.map((pitStopRow) => ({
             ...pitStopRow,
             driverName: getDriverFullName(Drivers?.find(({ driverId }) => (
