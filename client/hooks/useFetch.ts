@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from 'server/utils';
 
-function useFetch<T, P>({ url, mapData, shouldFetch = true }: UseFetchProps<T, P>) {
+function useFetch<T, P = T>({ url, mapData, shouldFetch = true }: UseFetchProps<T, P>) {
     const [data, setData] = useState<T>();
     const [fetching, setFetching] = useState(false);
 
     useEffect(() => {
         if (shouldFetch && !fetching) {
             setFetching(true);
-            const requestFn = Array.isArray(url) ? doMultipleRequests(url) : doSingleRequest(url);
+            const requestFn = Array.isArray(url) ? doMultipleRequests<P>(url) : doSingleRequest<P>(url);
             requestFn.then((res) => {
-                setData(mapData ? mapData(res) : res);
+                setData(mapData ? mapData(res) : res as any as T);
             }).finally(() => {
                 setFetching(false);
             });
@@ -23,12 +23,12 @@ function useFetch<T, P>({ url, mapData, shouldFetch = true }: UseFetchProps<T, P
     };
 }
 
-function doSingleRequest(url: string) {
-    return fetchData(url, fetch as Fetch);
+function doSingleRequest<T>(url: string) {
+    return fetchData<T>(url, fetch as Fetch);
 }
 
-function doMultipleRequests(urls: string[]) {
-    return Promise.all(urls.map((url) => fetchData(url, fetch as Fetch)));
+function doMultipleRequests<T>(urls: string[]) {
+    return Promise.all(urls.map((url) => fetchData(url, fetch as Fetch))) as any as Promise<T>;
 }
 
 interface UseFetchProps<T, P> {

@@ -5,8 +5,8 @@ import { renderWithRedux } from 'client/testing/utils';
 import { fetchData } from 'server/utils';
 import { getDriverResultsResponse, getReduxState } from 'client/testing/testFactories';
 import { waitFor } from '@testing-library/react';
-import { addDriverResults } from 'client/reducers/driverResults';
-import * as driverResults from 'client/reducers/driverResults';
+import { addDriverResults } from 'client/state/driverResults';
+import * as driverResults from 'client/state/driverResults';
 import { mapDriverResults } from 'client/utils/clientData';
 
 jest.spyOn(driverResults, 'addDriverResults');

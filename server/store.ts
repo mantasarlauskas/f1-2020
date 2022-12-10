@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
-import rootReducer, { InitialPageState } from 'client/reducers';
+import rootReducer, { InitialPageState } from 'client/state';
 
 export function getStore(initialState: InitialPageState) {
     return createStore(

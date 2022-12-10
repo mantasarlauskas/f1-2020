@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { PageState } from 'client/reducers';
-import { DriverStandingsRow } from 'client/reducers/driverStandings';
+import { PageState } from 'client/state';
+import { DriverStandingsRow } from 'client/state/driverStandings';
 import styles from 'client/styles/standings.less';
 import teamBorders from 'client/styles/team-borders.less';
 import { getDriverFullName } from 'client/utils/driver';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import styles from 'client/components/DriversPage.less';
 import DriverCard from 'client/components/DriverCard';
 import ListPage from 'client/components/ListPage';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import ResultsTable from 'client/components/ResultsTable';
 
 function RaceResultsTable({ roundId }: RaceResultsTableProps) {

@@ -5,8 +5,8 @@ import { renderWithRouterAndRedux } from 'client/testing/utils';
 import { fetchData } from 'server/utils';
 import { getReduxState, getRoundResults } from 'client/testing/testFactories';
 import { waitFor } from '@testing-library/react';
-import { addRoundResults } from 'client/reducers/roundResults';
-import * as roundResults from 'client/reducers/roundResults';
+import { addRoundResults } from 'client/state/roundResults';
+import * as roundResults from 'client/state/roundResults';
 import { mapRoundResults } from 'client/utils/clientData';
 
 jest.mock('client/utils/clientData');

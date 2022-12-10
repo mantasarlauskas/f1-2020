@@ -1,4 +1,4 @@
-import driverResultsReducer, { addDriverResults } from 'client/reducers/driverResults';
+import driverResultsReducer, { addDriverResults } from 'client/state/driverResults';
 import { mapDriverResults } from 'client/utils/clientData';
 import { getDriverResultsResponse } from 'client/testing/testFactories';
 

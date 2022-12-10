@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import styles from 'client/components/InfoRow.less';
 
 function InfoRow({ label, value, url }: InfoRowProps) {
+    if (!value) {
+        return null;
+    }
+
     return (
         <div className={styles.root}>
             <div className={styles.label}>
@@ -23,7 +27,7 @@ function InfoRow({ label, value, url }: InfoRowProps) {
 
 interface InfoRowProps {
     label: string;
-    value: string;
+    value?: string;
     url?: string
 }
 

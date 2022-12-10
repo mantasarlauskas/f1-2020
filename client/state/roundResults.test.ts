@@ -1,7 +1,7 @@
-import roundResultsReducer, { addRoundResults, RoundResults } from 'client/reducers/roundResults';
+import roundResultsReducer, { addRoundResults, RoundResults } from 'client/state/roundResults';
 import { getRoundResults } from 'client/testing/testFactories';
 
-describe('roundResultsReducer', () => {
+describe('roundResults', () => {
     const results = getRoundResults();
 
     it('adds round results', () => {

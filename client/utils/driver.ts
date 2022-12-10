@@ -1,4 +1,4 @@
-import { Driver } from 'client/reducers/drivers';
+import { Driver } from 'f1-api-interfaces';
 
 export function getDriverFullName(driver?: Driver) {
     if (!driver) {

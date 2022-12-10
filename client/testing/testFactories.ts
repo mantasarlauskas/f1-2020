@@ -1,5 +1,5 @@
-import { RoundResults } from 'client/reducers/roundResults';
-import { PageState } from 'client/reducers';
+import { RoundResults } from 'client/state/roundResults';
+import { PageState } from 'client/state';
 
 export function getDriver() {
     return {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RaceRow } from 'client/reducers/race';
 import styles from 'client/components/Race.less';
+import { RaceInfo } from 'f1-api-interfaces';
 
 function Race({ raceRow, showResultsButton }: RaceProps) {
     const { round, raceName, date, Circuit: { circuitName } } = raceRow;
@@ -31,7 +31,7 @@ function Race({ raceRow, showResultsButton }: RaceProps) {
 }
 
 interface RaceProps {
-    raceRow: RaceRow;
+    raceRow: RaceInfo;
     showResultsButton?: boolean;
 }
 

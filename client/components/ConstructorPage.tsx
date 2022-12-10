@@ -3,14 +3,13 @@ import classNames from 'classnames';
 import { useParams, Link } from 'react-router-dom';
 import { RouterParams } from 'client/utils/router';
 import { useShallowSelector } from 'client/utils/redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import EmptyPage from 'client/components/EmptyPage';
 import styles from 'client/components/ConstructorPage.less';
 import teamBorders from 'client/styles/team-borders.less';
 import { getImageUrl } from 'client/utils/images';
 import InfoRow from 'client/components/InfoRow';
 import { getDriverFullName } from 'client/utils/driver';
-import { Driver } from 'client/reducers/drivers';
 import ConstructorResultsTable from 'client/components/ConstructorResultsTable';
 
 function ConstructorPage() {
@@ -49,18 +48,18 @@ function ConstructorPage() {
                         Wiki page
                     </a>
                 </div>
-                {drivers.map(({ driverId, permanentNumber, ...driver }) => (
-                    <Link to={`/drivers/${driverId}`} className={styles.driver} key={driverId}>
+                {drivers.map((driver) => (
+                    <Link to={`/drivers/${driver.driverId}`} className={styles.driver} key={driver.driverId}>
                         <img
                             className={styles.driverImage}
-                            src={getImageUrl(driverId)}
-                            alt={getDriverFullName(driver as Driver)}
+                            src={getImageUrl(driver.driverId)}
+                            alt={getDriverFullName(driver)}
                         />
                         <div className={styles.driverNumber}>
-                            {permanentNumber}
+                            {driver.permanentNumber}
                         </div>
                         <div className={styles.driverName}>
-                            {getDriverFullName(driver as Driver)}
+                            {getDriverFullName(driver)}
                         </div>
                     </Link>
                 ))}

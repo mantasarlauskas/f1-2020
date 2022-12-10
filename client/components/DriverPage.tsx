@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 import { RouterParams } from 'client/utils/router';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import { useShallowSelector } from 'client/utils/redux';
 import { getDriverFullName } from 'client/utils/driver';
 import styles from 'client/components/DriverPage.less';
@@ -30,7 +30,7 @@ function DriverPage() {
     const { permanentNumber, driverId, constructorName, nationality, dateOfBirth, url, constructorId } = driver;
     const { points, position, wins } = driverStandings;
     return (
-        <div className={classNames(styles.root, teamBorders[constructorId])}>
+        <div className={classNames(styles.root, constructorId && teamBorders[constructorId])}>
             <h1 className={styles.name}>{name}</h1>
             <div className={styles.number}>{permanentNumber}</div>
             <div className={styles.content}>

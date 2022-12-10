@@ -3,11 +3,11 @@ import ResultsPage from 'client/components/ResultsPage';
 import { renderWithRedux } from 'client/testing/utils';
 import '@testing-library/jest-dom/extend-expect';
 import { getReduxState } from 'client/testing/testFactories';
-import { RaceRow } from 'client/reducers/race';
+import { ClientRaceRow } from 'client/state/race';
 
 jest.mock(
     'client/components/Race',
-    () => ({ raceRow }: { raceRow: RaceRow }) => (
+    () => ({ raceRow }: { raceRow: ClientRaceRow }) => (
         <div>{raceRow.raceName}</div>
     ),
 );

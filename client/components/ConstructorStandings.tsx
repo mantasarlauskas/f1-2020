@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ConstructorStandingsRow } from 'client/reducers/constructorStandings';
-import { PageState } from 'client/reducers';
+import { ConstructorStandingsRow } from 'client/state/constructorStandings';
+import { PageState } from 'client/state';
 import styles from 'client/styles/standings.less';
 import classNames from 'classnames';
 import teamBorders from 'client/styles/team-borders.less';

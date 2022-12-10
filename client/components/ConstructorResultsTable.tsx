@@ -1,6 +1,6 @@
 import React from 'react';
 import { mapConstructorResults } from 'client/utils/clientData';
-import { addConstructorResults, ConstructorResultsRow } from 'client/reducers/constructorResults';
+import { addConstructorResults, ConstructorResultsRow } from 'client/state/constructorResults';
 import SeasonResultsTable, { ResultsStateName } from 'client/components/SeasonResultsTable';
 import { Link } from 'react-router-dom';
 

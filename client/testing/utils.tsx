@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { Router, Route } from 'react-router-dom';
 import { createStore } from 'redux';
-import rootReducer from 'client/reducers';
+import rootReducer from 'client/state';
 import { Provider } from 'react-redux';
 import { LocationState } from 'client/utils/router';
 

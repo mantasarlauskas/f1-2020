@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { Circuit } from 'client/reducers/race';
 import styles from 'client/components/CircuitInfo.less';
 import InfoRow from 'client/components/InfoRow';
+import { Circuit } from 'f1-api-interfaces';
 
 function CircuitInfo({ circuit, raceName, date }: CircuitInfoProps) {
     const mapRef = useRef<HTMLDivElement>(null);

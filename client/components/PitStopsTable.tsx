@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import ResultsTable from 'client/components/ResultsTable';
 import { getDriverFullName } from 'client/utils/driver';
 import { useShallowSelector } from 'client/utils/redux';

@@ -1,4 +1,4 @@
-import constructorResultsReducer, { addConstructorResults } from 'client/reducers/constructorResults';
+import constructorResultsReducer, { addConstructorResults } from 'client/state/constructorResults';
 import { mapConstructorResults } from 'client/utils/clientData';
 import { getConstructorResultsResponse } from 'client/testing/testFactories';
 

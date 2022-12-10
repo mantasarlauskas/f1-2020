@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import useFetch from 'client/hooks/useFetch';
 import { mapRoundResults } from 'client/utils/clientData';
 import Loader from 'client/components/Loader';
-import { addRoundResults } from 'client/reducers/roundResults';
+import { addRoundResults } from 'client/state/roundResults';
 import RaceResultsTable from 'client/components/RaceResultsTable';
 import QualifyingResultsTable from 'client/components/QualifyingResultsTable';
 import PitStopsTable from 'client/components/PitStopsTable';

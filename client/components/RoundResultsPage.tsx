@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { RouterParams } from 'client/utils/router';
 import { useSelector } from 'react-redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import EmptyPage from 'client/components/EmptyPage';
 import styles from 'client/components/RoundResultsPage.less';
 import RoundResultsTable from 'client/components/RoundResultsTable';

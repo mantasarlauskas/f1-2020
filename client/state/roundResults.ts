@@ -1,3 +1,5 @@
+import { PitStop } from 'f1-api-interfaces';
+
 const ADD_ROUND_RESULTS = 'ADD_ROUND_RESULTS';
 
 export default function roundResultsReducer(
@@ -35,7 +37,7 @@ interface AddRoundAction {
 
 export interface RaceResultsRow {
     driverName: string;
-    driverNumber: string;
+    driverNumber?: string;
     constructorName: string;
     position: string;
     points: string;
@@ -48,25 +50,17 @@ export interface RaceResultsRow {
 export interface QualifyingResultsRow {
     position: string;
     driverName: string;
-    driverNumber: string;
+    driverNumber?: string;
     constructorName: string;
     q1?: string;
     q2?: string;
     q3?: string;
 }
 
-export interface PitStopRow {
-    driverId: string;
-    lap: string;
-    stop: string;
-    time: string;
-    duration: string;
-}
-
 export interface RoundResults {
     Race: RaceResultsRow[];
     Qualifying: QualifyingResultsRow[];
-    PitStops: PitStopRow[];
+    PitStops: PitStop[];
 }
 
 export interface RoundResultsState {

@@ -1,11 +1,16 @@
-import { DriverResultsRow } from 'client/reducers/driverResults';
-import { ConstructorResultsRow } from 'client/reducers/constructorResults';
+import { RaceResults, QualifyingResults, PitStops, PitStop } from 'f1-api-interfaces';
+import { DriverResultsRow } from 'client/state/driverResults';
+import { ConstructorResultsRow } from 'client/state/constructorResults';
 import { getDriverFullName } from 'client/utils/driver';
-import { PitStopRow, QualifyingResultsRow, RaceResultsRow, RoundResults } from 'client/reducers/roundResults';
+import {
+    QualifyingResultsRow,
+    RaceResultsRow,
+    RoundResults,
+} from 'client/state/roundResults';
 
-export function mapDriverResults({ RaceTable: { Races } }: any): DriverResultsRow[] {
-    return Races.map(({ raceName, round, date, Results: [Result] }: any) => {
-        const { position, points, grid, laps, status, Constructor: { name }, Time, FastestLap } = Result;
+export function mapDriverResults(races: RaceResults[]): DriverResultsRow[] {
+    return races.map(({ raceName, round, date, Results }) => {
+        const [{ position, points, grid, laps, status, Constructor: { name }, Time, FastestLap }] = Results;
         return {
             roundId: round,
             raceName,
@@ -22,8 +27,8 @@ export function mapDriverResults({ RaceTable: { Races } }: any): DriverResultsRo
     });
 }
 
-export function mapConstructorResults({ RaceTable: { Races } }: any): ConstructorResultsRow[] {
-    return Races.map(({ raceName, round, Results }: any) => ({
+export function mapConstructorResults(races: RaceResults[]): ConstructorResultsRow[] {
+    return races.map(({ raceName, round, Results }) => ({
         raceName,
         roundId: round,
         driverResults: Results.map(({
@@ -35,7 +40,7 @@ export function mapConstructorResults({ RaceTable: { Races } }: any): Constructo
             Time,
             FastestLap,
             Driver,
-        }: any) => ({
+        }) => ({
             position,
             points,
             grid,
@@ -48,8 +53,8 @@ export function mapConstructorResults({ RaceTable: { Races } }: any): Constructo
     }));
 }
 
-function mapRaceResults([{ Results }]: any[]): RaceResultsRow[] {
-    return Results.map(({
+function mapRaceResults([{ Results: results }]: RaceResults[]): RaceResultsRow[] {
+    return results.map(({
         position,
         points,
         grid,
@@ -58,7 +63,7 @@ function mapRaceResults([{ Results }]: any[]): RaceResultsRow[] {
         Time,
         Driver,
         Constructor,
-    }: any) => ({
+    }) => ({
         position,
         driverName: getDriverFullName(Driver),
         driverNumber: Driver.permanentNumber,
@@ -71,15 +76,15 @@ function mapRaceResults([{ Results }]: any[]): RaceResultsRow[] {
     }));
 }
 
-function mapQualifyingResults([{ QualifyingResults }]: any[]): QualifyingResultsRow[] {
-    return QualifyingResults.map(({
+function mapQualifyingResults([{ QualifyingResults: results }]: QualifyingResults[]): QualifyingResultsRow[] {
+    return results.map(({
         position,
         Driver,
         Constructor,
         Q1,
         Q2,
         Q3,
-    }: any) => ({
+    }) => ({
         position,
         driverName: getDriverFullName(Driver),
         driverNumber: Driver.permanentNumber,
@@ -90,26 +95,16 @@ function mapQualifyingResults([{ QualifyingResults }]: any[]): QualifyingResults
     }));
 }
 
-function mapPitStops([{ PitStops }]: any[]): PitStopRow[] {
-    return PitStops.map(({
-        driverId,
-        lap,
-        stop,
-        time,
-        duration,
-    }: any) => ({
-        driverId,
-        lap,
-        stop,
-        time,
-        duration,
-    }));
+function mapPitStops([{ PitStops: results }]: PitStops[]): PitStop[] {
+    return results;
 }
 
-export function mapRoundResults([RaceResults, QualifyingResults, PitStopResults]: any[]): RoundResults {
+export function mapRoundResults(
+    [raceResults, qualifyingResults, pitStopResults]: [RaceResults[], QualifyingResults[], PitStops[]],
+): RoundResults {
     return {
-        Race: mapRaceResults(RaceResults.RaceTable.Races),
-        Qualifying: mapQualifyingResults(QualifyingResults.RaceTable.Races),
-        PitStops: mapPitStops(PitStopResults.RaceTable.Races),
+        Race: mapRaceResults(raceResults),
+        Qualifying: mapQualifyingResults(qualifyingResults),
+        PitStops: mapPitStops(pitStopResults),
     };
 }

@@ -2,9 +2,9 @@ import React, { useEffect, ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useFetch from 'client/hooks/useFetch';
 import Loader from 'client/components/Loader';
-import { PageState } from 'client/reducers';
-import { DriverResultsRow } from 'client/reducers/driverResults';
-import { ConstructorResultsRow } from 'client/reducers/constructorResults';
+import { PageState } from 'client/state';
+import { DriverResultsRow } from 'client/state/driverResults';
+import { ConstructorResultsRow } from 'client/state/constructorResults';
 import ResultsTable from 'client/components/ResultsTable';
 
 export enum ResultsStateName {

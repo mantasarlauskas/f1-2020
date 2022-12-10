@@ -1,9 +1,9 @@
-import { InitialPageState } from 'client/reducers';
-import { Driver } from 'client/reducers/drivers';
-import { Constructor } from 'client/reducers/constructors';
+import { InitialPageState } from 'client/state';
 import { fetchData } from 'server/utils';
-import { DriverStandingsRow } from 'client/reducers/driverStandings';
-import { ConstructorStandingsRow } from 'client/reducers/constructorStandings';
+import { DriverStandingsRow } from 'client/state/driverStandings';
+import { ConstructorStandingsRow } from 'client/state/constructorStandings';
+import { Driver, Constructor, DriverStandings, ConstructorStandings, RaceInfo } from 'f1-api-interfaces';
+import { DriverInformation } from '../client/state/drivers';
 
 export async function getServerData(fetchFn: Fetch): Promise<InitialPageState> {
     return Promise.all([
@@ -14,57 +14,55 @@ export async function getServerData(fetchFn: Fetch): Promise<InitialPageState> {
         getSchedule(fetchFn),
         getResults(fetchFn),
     ]).then(([
-        Drivers,
-        Constructors,
-        DriverStandings,
-        ConstructorStandings,
-        Schedule,
-        Results,
+        drivers,
+        constructors,
+        driverStandings,
+        constructorStandings,
+        schedule,
+        results,
     ]) => ({
-        Drivers: mapDrivers(Drivers, DriverStandings, Constructors),
-        Constructors,
-        DriverStandings,
-        ConstructorStandings,
-        Schedule,
-        Results,
+        Drivers: mapDrivers(drivers, driverStandings, constructors),
+        Constructors: constructors,
+        DriverStandings: driverStandings,
+        ConstructorStandings: constructorStandings,
+        Schedule: schedule,
+        Results: results,
     }));
 }
 
 function mapDrivers(
-    Drivers: Omit<Driver, 'constructorId' | 'constructorName'>[],
-    DriverStandings: DriverStandingsRow[],
-    Constructors: Constructor[],
-): Driver[] {
-    return Drivers.map((driver) => {
-        const { constructorId } = DriverStandings.find((standingsRow) => (
+    drivers: Driver[],
+    driverStandings: DriverStandingsRow[],
+    constructors: Constructor[],
+): DriverInformation[] {
+    return drivers.map((driver) => {
+        const { constructorId } = driverStandings.find((standingsRow) => (
             standingsRow.driverId === driver.driverId
-        )) as DriverStandingsRow;
-        const driverConstructor = Constructors.find((constructor) => (
+        )) || {};
+
+        const driverConstructor = constructors.find((constructor) => (
             constructor.constructorId === constructorId
-        )) as Constructor;
+        ));
+
         return {
             ...driver,
-            constructorId: driverConstructor.constructorId,
-            constructorName: driverConstructor.name,
+            constructorId: driverConstructor?.constructorId,
+            constructorName: driverConstructor?.name,
         };
     });
 }
 
-async function getDriverData(fetchFn: Fetch): Promise<Omit<Driver, 'constructorId'>[]> {
-    const { DriverTable: { Drivers } } = await fetchData('drivers', fetchFn);
-    return Drivers;
+async function getDriverData(fetchFn: Fetch) {
+    return fetchData<Driver[]>('drivers', fetchFn);
 }
 
-async function getConstructorData(fetchFn: Fetch): Promise<Constructor[]> {
-    const { ConstructorTable: { Constructors } } = await fetchData('constructors', fetchFn);
-    return Constructors;
+async function getConstructorData(fetchFn: Fetch) {
+    return fetchData<Constructor[]>('constructors', fetchFn);
 }
 
 async function getDriverStandings(fetchFn: Fetch): Promise<DriverStandingsRow[]> {
-    const {
-        StandingsTable: { StandingsLists: [{ DriverStandings }] },
-    } = await fetchData('driverStandings', fetchFn);
-    return DriverStandings.map(({ Driver: DriverInfo, Constructors, ...data }: any) => ({
+    const [standings] = await fetchData<DriverStandings[]>('driverStandings', fetchFn);
+    return standings.DriverStandings.map(({ Driver: DriverInfo, Constructors, ...data }) => ({
         ...data,
         driverId: DriverInfo.driverId,
         constructorId: Constructors[0].constructorId,
@@ -72,21 +70,17 @@ async function getDriverStandings(fetchFn: Fetch): Promise<DriverStandingsRow[]>
 }
 
 async function getConstructorStandings(fetchFn: Fetch): Promise<ConstructorStandingsRow[]> {
-    const {
-        StandingsTable: { StandingsLists: [{ ConstructorStandings }] },
-    } = await fetchData('constructorStandings', fetchFn);
-    return ConstructorStandings.map(({ Constructor: ConstructorInfo, ...data }: any) => ({
+    const [standings] = await fetchData<ConstructorStandings[]>('constructorStandings', fetchFn);
+    return standings.ConstructorStandings.map(({ Constructor: ConstructorInfo, ...data }) => ({
         ...data,
         constructorId: ConstructorInfo.constructorId,
     }));
 }
 
 async function getResults(fetchFn: Fetch) {
-    const { RaceTable: { Races } } = await fetchData('', fetchFn);
-    return Races;
+    return fetchData<RaceInfo[]>('', fetchFn);
 }
 
 async function getSchedule(fetchFn: Fetch) {
-    const { RaceTable: { Races } } = await fetchData('', fetchFn, '2021');
-    return Races;
+    return fetchData<RaceInfo[]>('', fetchFn, '2021');
 }

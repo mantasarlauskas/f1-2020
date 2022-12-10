@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import Race from 'client/components/Race';
 import ListPage from 'client/components/ListPage';
 import styles from 'client/components/ResultsPage.less';

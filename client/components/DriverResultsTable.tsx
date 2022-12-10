@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { mapDriverResults } from 'client/utils/clientData';
-import { addDriverResults, DriverResultsRow } from 'client/reducers/driverResults';
+import { addDriverResults, DriverResultsRow } from 'client/state/driverResults';
 import SeasonResultsTable, { ResultsStateName } from 'client/components/SeasonResultsTable';
 
 function DriverResultsTable({ driverId }: DriverResultsTableProps) {

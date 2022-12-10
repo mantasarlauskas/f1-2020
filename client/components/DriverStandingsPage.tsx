@@ -1,7 +1,7 @@
 import React from 'react';
 import ListPage from 'client/components/ListPage';
 import { useSelector } from 'react-redux';
-import { PageState } from 'client/reducers';
+import { PageState } from 'client/state';
 import DriverStandings from 'client/components/DriverStandings';
 import styles from 'client/components/DriverStandingsPage.less';
 
